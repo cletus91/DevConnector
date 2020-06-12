@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import Dashboard from '../dashboard/Dashboard';
 
 const Login = ({ login, isAuthenticated }) => {
 	const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const Login = ({ login, isAuthenticated }) => {
 	};
 
 	if (isAuthenticated) {
-		return <Redirect to='/dashboard' />;
+		return <Redirect to='/dashboard' component={Dashboard} />;
 	}
 
 	return (
