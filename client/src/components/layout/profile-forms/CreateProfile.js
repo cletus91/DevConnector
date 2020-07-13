@@ -20,7 +20,9 @@ const CreateProfile = ({ createProfile, history }) => {
 		instagram: '',
 	});
 
-	const [displaySocialInputs, toggleDisplaySocialInputs] = useState(false);
+	const [displaySocialInputs, toggleDisplaySocialInputs] = useState(
+		false
+	);
 
 	const {
 		company,
@@ -50,8 +52,8 @@ const CreateProfile = ({ createProfile, history }) => {
 		<Fragment>
 			<h1 className='large text-primary'>Create Your Profile</h1>
 			<p className='lead'>
-				<i className='fas fa-user'></i> Let's get some information to make your
-				profile stand out
+				<i className='fas fa-user'></i> Let's get some information to
+				make your profile stand out
 			</p>
 			<small>* = required field</small>
 			<form className='form' onSubmit={(e) => onSubmit(e)}>
@@ -62,7 +64,9 @@ const CreateProfile = ({ createProfile, history }) => {
 						<option value='Junior Developer'>Junior Developer</option>
 						<option value='Senior Developer'>Senior Developer</option>
 						<option value='Manager'>Manager</option>
-						<option value='Student or Learning'>Student or Learning</option>
+						<option value='Student or Learning'>
+							Student or Learning
+						</option>
 						<option value='Instructor'>Instructor or Teacher</option>
 						<option value='Intern'>Intern</option>
 						<option value='Other'>Other</option>
@@ -116,7 +120,8 @@ const CreateProfile = ({ createProfile, history }) => {
 						onChange={onChange}
 					/>
 					<small className='form-text'>
-						Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+						Please use comma separated values (eg.
+						HTML,CSS,JavaScript,PHP)
 					</small>
 				</div>
 				<div className='form-group'>
@@ -128,8 +133,8 @@ const CreateProfile = ({ createProfile, history }) => {
 						onChange={onChange}
 					/>
 					<small className='form-text'>
-						If you want your latest repos and a Github link, include your
-						username
+						If you want your latest repos and a Github link, include
+						your username
 					</small>
 				</div>
 				<div className='form-group'>
@@ -138,13 +143,17 @@ const CreateProfile = ({ createProfile, history }) => {
 						name='bio'
 						value={bio}
 						onChange={onChange}></textarea>
-					<small className='form-text'>Tell us a little about yourself</small>
+					<small className='form-text'>
+						Tell us a little about yourself
+					</small>
 				</div>
 				<div className='my-2'>
 					<button
 						type='button'
 						className='btn btn-light'
-						onClick={() => toggleDisplaySocialInputs(!displaySocialInputs)}>
+						onClick={() =>
+							toggleDisplaySocialInputs(!displaySocialInputs)
+						}>
 						Add Social Network Links
 					</button>
 					<span>Optional</span>
@@ -158,6 +167,7 @@ const CreateProfile = ({ createProfile, history }) => {
 								placeholder='Twitter URL'
 								name='twitter'
 								value={twitter}
+								onChange={onChange}
 							/>
 						</div>
 
@@ -168,6 +178,7 @@ const CreateProfile = ({ createProfile, history }) => {
 								placeholder='Facebook URL'
 								name='facebook'
 								value={facebook}
+								onChange={onChange}
 							/>
 						</div>
 
@@ -178,6 +189,7 @@ const CreateProfile = ({ createProfile, history }) => {
 								placeholder='YouTube URL'
 								name='youtube'
 								value={youtube}
+								onChange={onChange}
 							/>
 						</div>
 
@@ -188,6 +200,7 @@ const CreateProfile = ({ createProfile, history }) => {
 								placeholder='Linkedin URL'
 								name='linkedin'
 								value={linkedin}
+								onChange={onChange}
 							/>
 						</div>
 
@@ -198,6 +211,7 @@ const CreateProfile = ({ createProfile, history }) => {
 								placeholder='Instagram URL'
 								name='instagram'
 								value={instagram}
+								onChange={onChange}
 							/>
 						</div>
 					</Fragment>
@@ -216,4 +230,6 @@ CreateProfile.propTypes = {
 	createProfile: PropTypes.func.isRequired,
 };
 
-export default connect(null, { createProfile })(withRouter(CreateProfile));
+export default connect(null, { createProfile })(
+	withRouter(CreateProfile)
+);

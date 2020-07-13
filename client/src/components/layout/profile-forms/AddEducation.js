@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { addEducation } from '../../../actions/profile';
 
 const AddEducation = ({ addEducation, history }) => {
@@ -14,8 +14,6 @@ const AddEducation = ({ addEducation, history }) => {
 		to: '',
 		description: '',
 	});
-
-	const [toDateDisable, toggleDisable] = useState(false);
 
 	const {
 		school,
@@ -41,8 +39,8 @@ const AddEducation = ({ addEducation, history }) => {
 			<section className='container'>
 				<h1 className='large text-primary'>Add Your Education</h1>
 				<p className='lead'>
-					<i className='fas fa-graduation-cap'></i> Add any school, bootcamp,
-					etc that you have attended
+					<i className='fas fa-graduation-cap' /> Add any school,
+					bootcamp, etc that you have attended
 				</p>
 				<small>* = required field</small>
 				<form className='form' onSubmit={(e) => onSubmit(e)}>
@@ -77,7 +75,12 @@ const AddEducation = ({ addEducation, history }) => {
 					</div>
 					<div className='form-group'>
 						<h4>From Date</h4>
-						<input type='date' name='from' value={from} onChange={onChange} />
+						<input
+							type='date'
+							name='from'
+							value={from}
+							onChange={onChange}
+						/>
 					</div>
 					<div className='form-group'>
 						<p>
@@ -87,8 +90,10 @@ const AddEducation = ({ addEducation, history }) => {
 								checked={current}
 								value={current}
 								onChange={(e) => {
-									setFormData({ ...formData, current: !current });
-									toggleDisable(!toDateDisable);
+									setFormData({
+										...formData,
+										current: !formData.current,
+									});
 								}}
 							/>{' '}
 							Current School or Bootcamp
@@ -101,7 +106,7 @@ const AddEducation = ({ addEducation, history }) => {
 							name='to'
 							value={to}
 							onChange={onChange}
-							disabled={toDateDisable ? 'disabled' : ''}
+							disabled={current}
 						/>
 					</div>
 					<div className='form-group'>
@@ -111,12 +116,10 @@ const AddEducation = ({ addEducation, history }) => {
 							rows='5'
 							placeholder='Program Description'
 							value={description}
-							onChange={onChange}></textarea>
+							onChange={onChange}
+						/>
 					</div>
 					<input type='submit' className='btn btn-primary my-1' />
-					<Link to='/add=education' className='btn btn-light my-1'>
-						Go Back
-					</Link>
 				</form>
 			</section>
 		</Fragment>
@@ -127,4 +130,6 @@ AddEducation.propTypes = {
 	addEducation: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addEducation })(withRouter(AddEducation));
+export default connect(null, { addEducation })(
+	withRouter(AddEducation)
+);

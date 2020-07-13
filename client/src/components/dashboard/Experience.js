@@ -10,11 +10,11 @@ const Experience = ({ experience, deleteExperience }) => {
 			<td>{exp.company}</td>
 			<td className='hide-sm'>{exp.title}</td>
 			<td className='hide-sm'>
-				<Moment format='YYYY/MM/DD'>{exp.from}</Moment>-
+				<Moment format='MM/DD/YYYY'>{exp.from}</Moment> -
 				{exp.to === null ? (
 					' Now'
 				) : (
-					<Moment format='YYYY/MM/DD'>{exp.to}</Moment>
+					<Moment format='MM/DD/YYYY'>{exp.to}</Moment>
 				)}
 			</td>
 			<td>
@@ -38,7 +38,7 @@ const Experience = ({ experience, deleteExperience }) => {
 						<th>Company</th>
 						<th className='hide-sm'>Title</th>
 						<th className='hide-sm'>Years</th>
-						<th></th>
+						<th />
 					</tr>
 				</thead>
 				<tbody>{experiences}</tbody>
@@ -49,7 +49,7 @@ const Experience = ({ experience, deleteExperience }) => {
 
 Experience.propTypes = {
 	experience: PropTypes.array.isRequired,
-	deleteExperience: PropTypes.func.isRequired,
+	deleteExperience: PropTypes.func.isRequired
 };
 
 export default connect(null, { deleteExperience })(Experience);
